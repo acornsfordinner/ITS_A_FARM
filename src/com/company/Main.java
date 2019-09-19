@@ -91,6 +91,8 @@ public class Main {
                             } catch (InputMismatchException e) {
                                 System.out.print("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
+                                ok = true;
+                                animalsInBarn++;
                             }
                             break;
                         case 2:
@@ -116,6 +118,8 @@ public class Main {
                             } catch (InputMismatchException e) {
                                 System.out.print("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
+                                ok = true;
+                                animalsInBarn++;
                             }
                             break;
                         case 3:
@@ -142,6 +146,8 @@ public class Main {
                             } catch (InputMismatchException e) {
                                 System.out.print("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
+                                ok = true;
+                                animalsInBarn++;
                             }
                             break;
                     }
