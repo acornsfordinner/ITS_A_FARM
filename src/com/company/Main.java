@@ -5,15 +5,23 @@ import java.util.Scanner;
 
 public class Main {
 
-    static byte animalsInBarn = 0;
-    static protected FarmAnimal[] b1 = new FarmAnimal[3];
-    static Barn[] ladugard;
-
     public static void main(String[] args) {
-    Barn barn1 = new Barn();
+    Barn barn1 = new Barn(barnSize());
     barn1.runFarm();
     }
 
+    private static int barnSize(){
+        System.out.println("Let's build you a barn! \nHow many animals do you want to fit in it? ");
+        int barnSize = -1;
+        do{
+        try{
+            barnSize = new Scanner(System.in).nextInt();
+        }catch(InputMismatchException e){
+            System.out.println("Invalid input");
+        }}
+        while(barnSize<1);
+        return barnSize;
+    }
 
 
 }

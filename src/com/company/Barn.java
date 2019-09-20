@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class Barn {
     protected FarmAnimal[] barnAnimals; //implementation av aggregat//Barn innehåller av FarmAnimal
     private int animalsInBarn = 0;
-    public Barn(){
-        barnAnimals = new FarmAnimal[5];
+
+    public Barn() {
+        barnAnimals = new FarmAnimal[3];
     }
 
-    public Barn(int size){
+    public Barn(int size) {
         barnAnimals = new FarmAnimal[size];
     }
-
 
 
     //ALLT HÄNDER I LAGGÅRN
@@ -23,43 +23,39 @@ public class Barn {
     public void runFarm() {
 
         Scanner scan = new Scanner(System.in);
-        byte choice = 0;
+        String choice = "0";
 
-        System.out.println("WELCOME TO THE FARM. \nOur barn has room for 3 animals.\n");
+        System.out.println("\nWELCOME TO YOUR FARM. \n\nYour brand new barn has room for "+barnAnimals.length+" animals.\n");
         do {
             System.out.println("\nWhat operation do you want to perform? \n1. Add an animal." +
                     "\n2. Hear the noises from the barn. " +
                     "\n3. Quit.");
-            try {
-                choice = scan.nextByte();
-                switch (choice) {
-                    case 1:
-                        addAnimal();
-                        break;
-                    case 2:
-                        if (animalsInBarn == 0)
-                            System.out.print("*EMPTY BARN SOUNDS*\n\n");
-                        else if (animalsInBarn == 1) {
-                            System.out.println("There is 1 animal in the barn: \n");
-                        }
-                        else {
-                            System.out.println("There are "+animalsInBarn+" animals in the barn: \n");
-                        }
-                        for (int x = 0; x < animalsInBarn; x++) {
-                            System.out.print(barnAnimals[x].toString() + "\n");
-                        }
-                        break;
-                    case 3:
-                        break;
-                    default:
 
-                }
-            } catch (InputMismatchException e) {
-                System.out.print("Invalid input. Try again.\n\n");
-                scan.nextLine();
+            choice = scan.nextLine();
+
+            switch (choice) {
+                case "1":
+                    addAnimal();
+                    break;
+                case "2":
+                    if (animalsInBarn == 0)
+                        System.out.print("\n*EMPTY BARN SOUNDS*\n\n");
+                    else if (animalsInBarn == 1) {
+                        System.out.println("There is 1 animal in the barn: \n");
+                    } else {
+                        System.out.println("There are " + animalsInBarn + " animals in the barn: \n");
+                    }
+                    for (int x = 0; x < animalsInBarn; x++) {
+                        System.out.print(barnAnimals[x].toString() + "\n");
+                    }
+                    break;
+                case "3":
+                    break;
+                default:
+                    System.out.print("Invalid input. Try again.\n\n");
+
             }
-
-        } while (choice != 3);
+        } while (!choice.equals("3"));
     }
 
     public void addAnimal() {
@@ -92,19 +88,19 @@ public class Barn {
                                     animalsInBarn++;
                                 } else {
                                     barnAnimals[animalsInBarn] = new Cow();
-                                    System.out.print("\nFine. the cow is now called "+barnAnimals[animalsInBarn].getName()+"\n");
+                                    System.out.print("\nFine. the cow is now called " + barnAnimals[animalsInBarn].getName() + "\n");
                                     ok = true;
                                     animalsInBarn++;
                                 }
                             } catch (InputMismatchException e) {
-                                System.out.print("Invalid name. You fucked up. No second chances.\n");
+                                System.out.println("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
                                 ok = true;
                                 animalsInBarn++;
                             }
                             break;
                         case 2:
-                            System.out.print("Do you want to name the sheep?" +
+                            System.out.println("Do you want to name the sheep?" +
                                     "\n1. Yes." +
                                     "\n2. No, i'm a horrible person " +
                                     "and i'm fine with calling a living being by a number.");
@@ -119,19 +115,19 @@ public class Barn {
                                     animalsInBarn++;
                                 } else {
                                     barnAnimals[animalsInBarn] = new Sheep();
-                                    System.out.print("\nFine. the sheep is now called "+barnAnimals[animalsInBarn].getName()+"\n");
+                                    System.out.print("\nFine. the sheep is now called " + barnAnimals[animalsInBarn].getName() + "\n");
                                     ok = true;
                                     animalsInBarn++;
                                 }
                             } catch (InputMismatchException e) {
-                                System.out.print("Invalid name. You fucked up. No second chances.\n");
+                                System.out.println("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
                                 ok = true;
                                 animalsInBarn++;
                             }
                             break;
                         case 3:
-                            System.out.print("Do you want to name the chicken?" +
+                            System.out.println("Do you want to name the chicken?" +
                                     "\n1. Yes." +
                                     "\n2. No, i'm a horrible person " +
                                     "and i'm fine with calling a living being by a number.");
@@ -145,14 +141,14 @@ public class Barn {
                                     barnAnimals[animalsInBarn] = new Chicken(name);
                                     animalsInBarn++;
                                 } else {
-                                    System.out.print("You monster. \n");
+                                    System.out.println("You monster. \n");
                                     barnAnimals[animalsInBarn] = new Chicken();
                                     ok = true;
-                                    System.out.print("\nFine. the sheep is now called "+barnAnimals[animalsInBarn].getName()+"\n");
+                                    System.out.print("\nFine. the sheep is now called " + barnAnimals[animalsInBarn].getName() + "\n");
                                     animalsInBarn++;
                                 }
                             } catch (InputMismatchException e) {
-                                System.out.print("Invalid name. You fucked up. No second chances.\n");
+                                System.out.println("Invalid name. You fucked up. No second chances.\n");
                                 scan.nextLine();
                                 ok = true;
                                 animalsInBarn++;
@@ -161,7 +157,7 @@ public class Barn {
                     }
 
                 } catch (InputMismatchException e) {
-                    System.out.print("Invalid input. Try again.\n\n");
+                    System.out.println("Invalid input. Try again.\n\n");
                     scan.nextLine();
                 }
             } else {
@@ -170,7 +166,6 @@ public class Barn {
             }
         } while (!ok);
     }
-
 
 
 }
